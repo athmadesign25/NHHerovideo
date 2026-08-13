@@ -1,88 +1,92 @@
 .section {
-  background: linear-gradient(
-    160deg,
-    #101a2d 0%,
-    #172c4c 40%,
-    #1d385d 70%,
-    #0f1d33 100%
-  );
-  padding: clamp(48px, 6vw, 64px) 0 clamp(40px, 6vw, 80px);
+  background: #F1F7FF;
+  padding: clamp(60px, 7vw, 90px) 0 clamp(60px, 7vw, 100px);
   position: relative;
   overflow: hidden;
-  color: #ffffff;
+  color: #0F172A;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
 }
 
 .specialitiesCtaWrap {
   text-align: center;
   position: relative;
   z-index: 10;
-  margin-bottom: clamp(140px, 16vw, 220px);
+  margin-bottom: clamp(40px, 5vw, 60px);
 }
 
 .specialitiesCta {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 14px 32px;
-  border-radius: var(--radius-full);
-  background: var(--color-primary);
-  color: var(--color-text-inverse);
+  padding: 12px 28px;
+  border-radius: 999px;
+  background: #034EA2;
+  color: #FFFFFF;
   text-decoration: none;
-  font-size: var(--font-size-base);
+  font-size: 15px;
   font-weight: 600;
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 4px 16px rgba(3, 78, 162, 0.2);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .specialitiesCta:hover {
   transform: translateY(-2px);
-  background: var(--color-primary-dark);
-  box-shadow: var(--shadow-md);
-}
-
-.dotGridBackground {
-  position: absolute;
-  top: -20%;
-  left: -10%;
-  width: 120%;
-  height: 140%;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 36px 36px;
-  pointer-events: none;
-  z-index: 1;
+  background: #023a78;
+  box-shadow: 0 6px 20px rgba(3, 78, 162, 0.3);
 }
 
 .header {
   text-align: center;
   max-width: 760px;
-  margin: 0 auto clamp(80px, 8vw, 120px);
+  margin: 0 auto clamp(60px, 7vw, 90px);
   position: relative;
   z-index: 10;
 }
 
-.header h2 {
-  color: #ffffff !important;
+.sectionTitle {
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 800;
+  color: #0F172A !important;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
 }
 
 .headerSubtitle {
+  font-size: clamp(16px, 1.2vw, 19px);
   white-space: nowrap;
   margin-left: auto;
   margin-right: auto;
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: #475569 !important;
 }
 
+@media (max-width: 640px) {
+  .headerSubtitle {
+    white-space: normal;
+  }
+}
+
+/* ─── Staggered Feature Cards Grid ─── */
 .featuresGrid {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: clamp(80px, 8vw, 140px);
+  gap: clamp(60px, 7vw, 100px);
   max-width: 1040px;
-  margin: 0 auto;
+  margin: 0 auto clamp(60px, 8vw, 100px);
 }
 
 .featureCard {
   background: transparent;
-  color: #ffffff;
+  color: #0F172A;
   border-radius: 0;
   border: none;
   min-height: clamp(280px, 25vw, 320px);
@@ -92,9 +96,9 @@
   align-items: flex-start;
   justify-content: flex-start;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   width: 100%;
-  max-width: 680px;
+  max-width: 640px;
 }
 
 .featureCard:nth-child(odd) {
@@ -111,85 +115,113 @@
   align-items: flex-end;
 }
 
-
+/* Image/Video Card Wrapper: Subtle 2-Degree Tilt & Dynamic Drop-Shadow */
 .featureIllustration {
-  margin-bottom: clamp(72px, 8vw, 88px);
+  margin-bottom: clamp(24px, 3vw, 36px);
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  overflow: visible;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s ease;
+  transform-origin: center center;
+  will-change: transform, filter;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.08));
 }
 
 .featureImage {
-  height: auto;
-  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
   object-fit: cover;
+  display: block;
 }
 
-/* Pseudo-random sizing for the 4 cards */
-.featureCard:nth-child(1) .featureImage {
+/* Video Wrapper: Clipped 12px Rounded Corner Frame for 20% Zoomed Video */
+.videoWrapper {
   width: 100%;
-  aspect-ratio: 16/9;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  display: block;
 }
-.featureCard:nth-child(1) .featureIllustration,
-.featureCard:nth-child(2) .featureIllustration {
-  margin-bottom: clamp(48px, 6vw, 64px);
+
+.featureVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.2);
+  transform-origin: center center;
+}
+
+/* Left-aligned cards (1st & 3rd): Tilt image/video card wrapper 2 degrees to left (-2deg) */
+.featureCard:nth-child(odd):hover .featureIllustration {
+  transform: rotate(-2deg) scale(1.02);
+  filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.16));
+}
+
+/* Right-aligned cards (2nd & 4th): Tilt image/video card wrapper 2 degrees to right (2deg) */
+.featureCard:nth-child(even):hover .featureIllustration {
+  transform: rotate(2deg) scale(1.02);
+  filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.16));
+}
+
+/* Aspect ratios & alignment for feature cards */
+.featureCard:nth-child(1) .featureImage,
+.featureCard:nth-child(1) .videoWrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
 }
 .featureCard:nth-child(2) .featureImage {
   width: 95%;
-  aspect-ratio: 4/3;
+  aspect-ratio: 4 / 3;
 }
 .featureCard:nth-child(2) .featureIllustration {
   justify-content: flex-end;
 }
 .featureCard:nth-child(3) .featureImage {
   width: 100%;
-  aspect-ratio: 3/2;
+  aspect-ratio: 3 / 2;
 }
-.featureCard:nth-child(4) .featureImage {
-  width: 90%;
-  aspect-ratio: 1/1;
+.featureCard:nth-child(4) .featureImage,
+.featureCard:nth-child(4) .videoWrapper {
+  width: 95%;
+  aspect-ratio: 16 / 10;
 }
 .featureCard:nth-child(4) .featureIllustration {
   justify-content: flex-end;
 }
 
 .featureTitle {
-  margin: 0 0 8px 0;
-  color: #ffffff;
-  font-size: 18px;
-  line-height: 1.2;
+  margin: 0 0 6px 0;
+  color: #0F172A;
+  font-size: 22px;
+  line-height: 1.25;
   font-weight: 700;
-}
-
-.featureSubtitle {
-  margin: 0 0 16px 0;
-  color: var(--color-emergency);
-  font-size: clamp(0.9rem, 1vw, 1rem);
-  font-weight: 500;
-  line-height: 1.4;
 }
 
 .featureDescription {
   margin: 0;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: clamp(0.95rem, 1vw, 1.05rem);
+  color: #475569;
+  font-size: clamp(15px, 1.1vw, 17px);
   line-height: 1.5;
   display: flex;
   flex-direction: column;
 }
 
-
-
+/* ─── Accreditation Badges Row ─── */
 .badgesWrap {
-  margin-top: clamp(16px, 2vw, 24px);
-  max-width: 1040px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1140px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: var(--radius-lg);
-  border: 0;
-  background: var(--color-primary-light);
-  padding: clamp(12px, 1.4vw, 16px) clamp(6px, 1vw, 12px);
+  border: none;
+  background: transparent;
+  padding: 12px 16px;
+  box-shadow: none;
 }
 
 .badgesRow {
@@ -200,14 +232,14 @@
 
 .badgeItem {
   position: relative;
-  min-height: 136px;
-  padding: 8px 14px;
+  min-height: 108px;
+  padding: 6px 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .badgeDivider {
@@ -220,21 +252,21 @@
 }
 
 .badgeLogo {
-  width: 70px;
-  height: 70px;
+  width: 68px;
+  height: 68px;
   flex-shrink: 0;
   object-fit: contain;
   object-position: center;
 }
 
 .logoFallback {
-  width: 70px;
-  height: 70px;
+  width: 68px;
+  height: 68px;
   border-radius: 999px;
   border: 1px solid rgba(3, 78, 162, 0.24);
   background: rgba(72, 155, 255, 0.14);
-  color: var(--color-primary);
-  font-size: 22px;
+  color: #034EA2;
+  font-size: 18px;
   font-weight: 800;
   letter-spacing: 0.03em;
   display: inline-flex;
@@ -243,18 +275,31 @@
 }
 
 .badgeTitle {
-  color: var(--color-text);
-  font-size: 14px;
+  color: #1e293b;
+  font-size: 13.5px;
   font-weight: 700;
   line-height: 1.25;
   max-width: 22ch;
   text-wrap: balance;
 }
 
-@media (max-width: 900px) {
-  .featuresGrid {
-    grid-template-columns: repeat(2, minmax(260px, 1fr));
-    gap: var(--sp-3);
+@media (max-width: 768px) {
+  .featureCard:nth-child(even),
+  .featureCard:nth-child(odd) {
+    align-self: center;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .featureCard:nth-child(even) .featureDescription {
+    align-items: center;
+  }
+
+  .featureIllustration,
+  .featureCard:nth-child(2) .featureIllustration,
+  .featureCard:nth-child(4) .featureIllustration {
+    justify-content: center;
   }
 
   .badgesRow {
@@ -263,63 +308,5 @@
 
   .badgeDivider {
     display: none;
-  }
-
-  .featureCard {
-    min-height: 198px;
-  }
-}
-
-@media (max-width: 768px) {
-  .header {
-    margin-bottom: var(--sp-4);
-  }
-
-  .featuresGrid {
-    grid-template-columns: 1fr;
-    max-width: 560px;
-  }
-
-  .featureCard {
-    min-height: 170px;
-    padding: 18px;
-  }
-
-  .featureTitle {
-    font-size: clamp(1.22rem, 5vw, 1.4rem);
-  }
-
-  .featureDescription {
-    font-size: 0.95rem;
-    max-width: none;
-  }
-
-  .badgeItem {
-    min-height: 108px;
-    padding: 12px;
-  }
-
-  .badgesRow {
-    grid-template-columns: 1fr;
-  }
-
-  .badgeLogo {
-    width: 58px;
-    height: 58px;
-  }
-
-  .logoFallback {
-    width: 58px;
-    height: 58px;
-    font-size: 18px;
-  }
-}
-
-@media (max-width: 460px) {
-  .headerSubtitle {
-    white-space: normal;
-    max-width: 280px; /* Forces exactly two lines */
-    margin: 0 auto;
-    line-height: 1.4;
   }
 }
